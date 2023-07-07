@@ -105,9 +105,11 @@ public class LieuController implements Initializable {
     }
 
     public void displayCombo(){
+        this.display_by.getItems().removeAll(this.displayBy);
         this.display_by.getItems().addAll(this.displayBy);
         this.display_by.setValue(25);
 
+        this.combo_province.getItems().removeAll(this.province);
         this.combo_province.getItems().addAll(this.province);
         this.combo_province.setValue("FIANARANTSOA");
     }
@@ -160,7 +162,7 @@ public class LieuController implements Initializable {
 
     @FXML
     void btnCancelClicked(ActionEvent event) {
-
+        this.TxtAnnulerClicked(null);
     }
 
     @FXML
@@ -170,7 +172,20 @@ public class LieuController implements Initializable {
 
     @FXML
     void delete(ActionEvent event) {
+        notification = new Notification("Suppression Lieu");
+        Lieu salle = table_lieu.getSelectionModel().getSelectedItem();
 
+        if(salle == null){
+            notification.showAlert("Veuillez selectionner une ligne s'il vous plaît!", Alert.AlertType.WARNING);
+        } else if(
+                notification.showConfirmation("Voulez-vous supprimer cette ligne?",
+                        Alert.AlertType.CONFIRMATION).showAndWait().get() == ButtonType.OK
+                        && LieuService.delete(salle)
+        ) {
+            notification.showAlert("La suppression a été effectué avec succès", Alert.AlertType.INFORMATION);
+            this.list();
+            this.TxtAnnulerClicked(null);
+        }
     }
 
     @FXML
@@ -200,11 +215,52 @@ public class LieuController implements Initializable {
 
     @FXML
     void txtSearchSalle(KeyEvent event) {
+        String recherche = txt_search.getText();
 
+        if(recherche.isEmpty()) this.list();
+        else {
+            data.clear();
+            List<Lieu> lieux = LieuService.getAll();
+
+            for(Lieu lieu: lieux){
+                if(
+                        lieu.getCodelieu().toLowerCase().contains(recherche.toLowerCase())
+                                || lieu.getDesignation().toLowerCase().contains(recherche.toLowerCase())
+                                || lieu.getProvince().toLowerCase().contains(recherche.toLowerCase())
+                ) {
+                    data.add(lieu);
+                }
+            }
+
+            table_lieu.setItems(data);
+        }
     }
 
     @FXML
     void update(ActionEvent event) {
+        Lieu selectedItem = table_lieu.getSelectionModel().getSelectedItem();
+        notification = new Notification("Modification Salle");
 
+        String code =  input_code.getText();
+        String design = designation.getText();
+        String province = combo_province.getValue();
+
+        if(selectedItem == null){
+            notification.showAlert("Veuillez selectionner une ligne s'il vous plaît!", Alert.AlertType.WARNING);
+        } else {
+            selectedItem.setCodelieu(code);
+            selectedItem.setDesignation(design);
+            selectedItem.setProvince(province);
+
+            if(
+                    notification.showConfirmation("Voulez-vous modifier cette ligne?",
+                            Alert.AlertType.CONFIRMATION).showAndWait().get() == ButtonType.OK
+                            && LieuService.update(selectedItem)
+            ){
+                notification.showAlert("La modification a été effectué avec succès", Alert.AlertType.INFORMATION);
+                this.TxtAnnulerClicked(null);
+                this.list();
+            }
+        }
     }
 }

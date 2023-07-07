@@ -55,4 +55,37 @@ public class LieuService {
         }
         return false;
     }
+
+    public static boolean delete(Lieu lieu) {
+        try{
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            Lieu deletedSalle = session.get(Lieu.class, lieu.getCodelieu());
+            session.delete(deletedSalle);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return false;
+    }
+
+    public static boolean update(Lieu selectedItem) {
+        try{
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            session.update(selectedItem);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return false;
+    }
 }
