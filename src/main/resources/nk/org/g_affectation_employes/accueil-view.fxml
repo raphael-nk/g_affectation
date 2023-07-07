@@ -1,14 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="nk.org.g_affectation_employes.controllers.AccueilController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="740.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nk.org.g_affectation_employes.controllers.AccueilController">
+    <children>
+        <Pane prefHeight="68.0" prefWidth="1031.0" style="-fx-background-color: gray; -fx-opacity: 0.6;">
+            <children>
+                <Text fill="WHITE" layoutX="390.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLEAU DE BORD">
+                    <font>
+                        <Font name="Lucida Handwriting Italic" size="24.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <ImageView fitHeight="32.0" fitWidth="38.0" layoutX="979.0" layoutY="16.0">
+            <image>
+                <Image url="@../../../assets/icon_close.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <ImageView fitHeight="160.0" fitWidth="265.0" layoutX="376.0" layoutY="537.0">
+            <image>
+                <Image url="@../../../assets/happy-teacher-with-students-background.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="160.0" fitWidth="265.0" layoutX="660.0" layoutY="326.0">
+            <image>
+                <Image url="@../../../assets/pngtree-original-school-season-classroom-banner-background-image_342072.jpg" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="160.0" fitWidth="236.0" layoutX="376.0" layoutY="99.0">
+            <image>
+                <Image url="@../../../assets/portrait-female-teacher-holding-notepad-green.jpg" />
+            </image>
+        </ImageView>
+        <Text layoutX="110.0" layoutY="392.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION D'AFFECTATION DES EMPLOYES" textAlignment="CENTER" wrappingWidth="532.5166015625">
+            <font>
+                <Font name="Segoe UI Black Italic" size="39.0" />
+            </font></Text>
+        <Text layoutX="435.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLOYEE">
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="456.0" layoutY="721.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AFFECTATION">
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="766.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIEU">
+            <font>
+                <Font name="Verdana Bold" size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="108.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérer les informations relatives aux employés qui travaillent dans l'entreprise" wrappingWidth="264.9999991953373">
+            <font>
+                <Font name="Corbel Light" size="21.0" />
+            </font>
+        </Text>
+        <Text layoutX="107.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérer les informations relatives aux affectations de chaque employés dans l'entreprise" wrappingWidth="264.9999991953373">
+            <font>
+                <Font name="Corbel Light" size="21.0" />
+            </font>
+        </Text>
+    </children>
 </AnchorPane>

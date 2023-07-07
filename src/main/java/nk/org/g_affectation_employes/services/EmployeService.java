@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class EmployeService {
@@ -22,12 +23,13 @@ public class EmployeService {
 
 
     public static Integer totalEmploye(){
-        Integer total = 0;
+        BigInteger total = BigInteger.valueOf(0);
         try{
             session = sessionFactory.getCurrentSession();
             session.beginTransaction();
-            total = (Integer) session.createNativeQuery("SELECT COUNT(p.codeemp) FROM Employe p").uniqueResult();
-            return total;
+            total = (BigInteger) session.createNativeQuery("SELECT COUNT(p.codeemp) FROM Employe p").uniqueResult();
+            System.out.println(total);
+            return total.intValue();
 
         } catch (Exception e){
             e.printStackTrace();
@@ -35,6 +37,58 @@ public class EmployeService {
             session.close();
         }
 
-        return total;
+        return total.intValue();
+    }
+
+    public static boolean delete(Employe employee) {
+        session = sessionFactory.getCurrentSession();
+
+        try {
+            session.beginTransaction();
+            Employe deletedRow = session.get(Employe.class, employee.getCodeemp());
+            session.delete(deletedRow);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return false;
+    }
+
+    public static boolean store(Employe newEmploye) {
+        try{
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(newEmploye);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return false;
+    }
+
+    public static boolean update(Employe selectedItem) {
+        session = sessionFactory.getCurrentSession();
+        try{
+            session.beginTransaction();
+            session.update(selectedItem);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return false;
     }
 }
