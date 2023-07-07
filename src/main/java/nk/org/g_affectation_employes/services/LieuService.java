@@ -39,4 +39,20 @@ public class LieuService {
         session.close();
         return lieux;
     }
+
+    public static boolean store(Lieu lieu) {
+        try{
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(lieu);
+            session.getTransaction().commit();
+            return true;
+
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return false;
+    }
 }

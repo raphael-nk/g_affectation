@@ -5,12 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
@@ -145,7 +140,22 @@ public class LieuController implements Initializable {
 
     @FXML
     void add(ActionEvent event) {
+        String code = input_code.getText();
+        String design = designation.getText();
+        String province = combo_province.getValue();
+        notification = new Notification("AJOUT NOUVEAU LIEU");
 
+        if(code.isEmpty() || design.isEmpty()){
+            notification.showAlert("Veuillez remplir les champs obligatoires!", Alert.AlertType.WARNING);
+        } else {
+            Lieu lieu = new Lieu(code, design, province);
+
+            if(LieuService.store(lieu)){
+                notification.showAlert("L'ajout d'un nouveau lieu a été effectué avec succès", Alert.AlertType.INFORMATION);
+                this.resetField();
+                this.list();
+            }
+        }
     }
 
     @FXML
@@ -175,7 +185,12 @@ public class LieuController implements Initializable {
 
     @FXML
     void getSelectedRowFromTable(MouseEvent event) {
+        this.toggleBtnAndText("MODIFICATION", false, true);
+        Lieu selectedItem = table_lieu.getSelectionModel().getSelectedItem();
 
+        input_code.setText(selectedItem.getCodelieu());
+        designation.setText(selectedItem.getDesignation());
+        combo_province.setValue(selectedItem.getProvince());
     }
 
     @FXML
