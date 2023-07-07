@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="nk.org.g_affectation_employes.controllers.AffectationController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="740.0" prefWidth="1030.0" stylesheets="@../../../assets/styles/class_admin.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nk.org.g_affectation_employes.controllers.AffectationController">
+    <children>
+        <Pane prefHeight="68.0" prefWidth="1031.0" style="-fx-background-color: gray; -fx-opacity: 0.6;">
+            <children>
+                <Text fill="WHITE" layoutX="365.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LISTE AFFECTATION">
+                    <font>
+                        <Font name="Lucida Handwriting Italic" size="24.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <ImageView fx:id="close_accueil_win" fitHeight="32.0" fitWidth="38.0" layoutX="979.0" layoutY="16.0" onMouseClicked="#btnCloseAccueilClicked">
+            <image>
+                <Image url="@../../../assets/icon_close.png" />
+            </image>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ImageView>
+        <Pane layoutX="10.0" layoutY="100.0" prefHeight="387.0" prefWidth="289.0" style="-fx-background-color: gray; -fx-opacity: 0.8;">
+            <children>
+                <Label fx:id="txt_new_pointage" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="26.0" prefHeight="26.0" prefWidth="230.0" text="NOUVEAU AFFECTATION" textAlignment="JUSTIFY" textFill="WHITE">
+                    <font>
+                        <Font name="Verdana Bold" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btn_supprimer" layoutX="22.0" layoutY="323.0" mnemonicParsing="false" onAction="#delete" prefHeight="33.0" prefWidth="109.0" styleClass="btn-danger" text="Supprimer">
+                    <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btn_modifier" layoutX="158.0" layoutY="323.0" mnemonicParsing="false" onAction="#update" prefHeight="33.0" prefWidth="97.0" styleClass="btn-success" text="Modifier">
+                    <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btn_ajouter" layoutX="158.0" layoutY="324.0" mnemonicParsing="false" onAction="#add" prefHeight="33.0" prefWidth="97.0" styleClass="btn-success" text="Ajouter">
+                    <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Text fx:id="txt_annuler" fill="WHITE" layoutX="181.0" layoutY="303.0" onMouseClicked="#TxtAnnulerClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Annuler" underline="true">
+                    <font>
+                        <Font name="Verdana Bold Italic" size="16.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Text>
+                <Button fx:id="btn_annuler" layoutX="22.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="33.0" prefWidth="109.0" styleClass="btn-danger" text="Annuler">
+                    <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                    </font>
+                </Button>
+                <ComboBox fx:id="combo_code_emp" layoutX="25.0" layoutY="74.0" prefHeight="39.0" prefWidth="230.0" promptText="Code Employé">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></ComboBox>
+                <ComboBox fx:id="combo_code_lieu" layoutX="25.0" layoutY="129.0" prefHeight="39.0" prefWidth="230.0" promptText="Code Lieu">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor></ComboBox>
+                <DatePicker fx:id="date" layoutX="24.0" layoutY="182.0" prefHeight="39.0" prefWidth="230.0" promptText="Date Affectation" />
+                <Separator layoutX="38.0" layoutY="265.0" prefHeight="11.0" prefWidth="200.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="313.0" layoutY="143.0" prefHeight="567.0" prefWidth="700.0" style="-fx-background-color: gray; -fx-opacity: 0.8;">
+            <children>
+                <TableView fx:id="table_affectation" onMouseClicked="#getSelectedRowFromPointageTable" prefHeight="567.0" prefWidth="700.0">
+                    <columns>
+                        <TableColumn fx:id="col_id" prefWidth="89.0" text="#" />
+                        <TableColumn fx:id="col_code_emp" prefWidth="187.0" text="CODE EMPLOYE" />
+                        <TableColumn fx:id="col_code_lieu" prefWidth="223.0" text="CODE LIEU" />
+                        <TableColumn fx:id="col_date" prefWidth="193.0" text="DATE" />
+                    </columns>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </TableView>
+            </children>
+        </Pane>
+        <TextField fx:id="txt_search" layoutX="493.0" layoutY="101.0" onKeyReleased="#txtSearchPointage" prefHeight="33.0" prefWidth="520.0" promptText="Recherche Par Code Employé, Code Lieu, ou date">
+            <font>
+                <Font name="Verdana Italic" size="14.0" />
+            </font>
+        </TextField>
+        <Pane layoutX="10.0" layoutY="499.0" prefHeight="211.0" prefWidth="289.0" style="-fx-background-color: gray; -fx-opacity: 0.8;">
+            <children>
+                <Label fx:id="txt_new_prof1" layoutX="58.0" layoutY="31.0" prefHeight="26.0" prefWidth="171.0" text="EXPORTER EN..." textFill="WHITE">
+                    <font>
+                        <Font name="Verdana Bold" size="18.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="export_to_pdf" fitHeight="53.0" fitWidth="45.0" layoutX="75.0" layoutY="76.0" onMouseClicked="#exportToPdfClicked">
+                    <image>
+                        <Image url="@../../../assets/icons8_pdf_96px.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+                <ImageView fx:id="export_to_excel" fitHeight="53.0" fitWidth="45.0" layoutX="142.0" layoutY="76.0" onMouseClicked="#exportToExcelClicked">
+                    <image>
+                        <Image url="@../../../assets/icons8_xls_96px.png" />
+                    </image>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </ImageView>
+            </children>
+        </Pane>
+        <ChoiceBox fx:id="display_by" layoutX="313.0" layoutY="101.0" onContextMenuRequested="#handleDisplayBy" prefHeight="33.0" prefWidth="157.0" />
+    </children>
 </AnchorPane>

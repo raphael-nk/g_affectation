@@ -23,6 +23,13 @@ public class Affecter {
         this.date = date;
     }
 
+    public Affecter(int id, String codeemp, String codelieu, Date date) {
+        this.id = id;
+        this.codeemp = codeemp;
+        this.codelieu = codelieu;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }
