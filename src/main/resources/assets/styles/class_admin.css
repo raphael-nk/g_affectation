@@ -1,0 +1,26 @@
+.item-link{
+	/*-fx-background-radius: 15px;*/
+	/*-fx-background-color: gray;*/
+	-fx-cursor: hand;
+}
+.item-link:hover{
+	-fx-background-color: gray;
+}
+.item-link:active{
+	-fx-background-color: gray;
+}
+.btn-success{
+	-fx-cursor: hand;
+	-fx-background-color: rgb(9, 126, 19);
+	-fx-text-fill: white;
+}
+.btn-danger{
+	-fx-cursor: hand;
+	-fx-background-color: rgba(185, 29, 29);
+	-fx-text-fill: white;
+}
+.btn-primary{
+	-fx-cursor: hand;
+	-fx-background-color: rgb(14, 18, 141);
+	-fx-text-fill: white;
+}

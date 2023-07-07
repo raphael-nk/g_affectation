@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="main_window" prefHeight="740.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nk.org.g_affectation_employes.controllers.MainWinController">
+    <children>
+        <BorderPane layoutX="12.0" layoutY="5.0" prefHeight="750.0" prefWidth="1250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <left>
+                <AnchorPane prefHeight="681.0" prefWidth="220.0" style="-fx-background-color: #2596be;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="WHITE" layoutX="44.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G-AFFECTATION">
+                            <font>
+                                <Font name="Agency FB" size="25.0" />
+                            </font>
+                        </Text>
+                        <Separator layoutX="10.0" layoutY="68.0" prefWidth="200.0" />
+                        <Pane fx:id="menu_accueil" layoutY="83.0" onMouseClicked="#menuAccueilClicked" prefHeight="46.0" prefWidth="220.0" styleClass="item-link" stylesheets="@../../../assets/styles/class_admin.css">
+                            <children>
+                                <Text fill="WHITE" layoutX="81.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accueil" wrappingWidth="75.876953125">
+                                    <font>
+                                        <Font name="Verdana" size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="40.0" layoutY="9.0">
+                                    <image>
+                                        <Image url="@../../../assets/icon_accueil.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Pane>
+                        <Pane fx:id="menu_employe" layoutY="132.0" onMouseClicked="#menuEmployeClicked" prefHeight="46.0" prefWidth="220.0" styleClass="item-link" stylesheets="@../../../assets/styles/class_admin.css">
+                            <children>
+                                <Text fill="WHITE" layoutX="79.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employé" wrappingWidth="102.876953125">
+                                    <font>
+                                        <Font name="Verdana" size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="40.0" layoutY="9.0">
+                                    <image>
+                                        <Image url="@../../../assets/icon_teacher_1.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Pane>
+                        <Pane fx:id="menu_lieu" layoutY="183.0" onMouseClicked="#menuLieuClicked" prefHeight="46.0" prefWidth="220.0" styleClass="item-link" stylesheets="@../../../assets/styles/class_admin.css">
+                            <children>
+                                <Text fill="WHITE" layoutX="81.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="75.876953125">
+                                    <font>
+                                        <Font name="Verdana" size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="40.0" layoutY="9.0">
+                                    <image>
+                                        <Image url="@../../../assets/icons8_warehouse_48px.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Pane>
+                        <Pane fx:id="menu_affectation" layoutY="234.0" onMouseClicked="#menuAffectationClicked" prefHeight="46.0" prefWidth="220.0" styleClass="item-link" stylesheets="@../../../assets/styles/class_admin.css">
+                            <children>
+                                <Text fill="WHITE" layoutX="78.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affectation" wrappingWidth="106.876953125">
+                                    <font>
+                                        <Font name="Verdana" size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="40.0" layoutY="9.0">
+                                    <image>
+                                        <Image url="@../../../assets/icons8_settings_48px.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Pane>
+                        <Pane fx:id="menu_logout" layoutY="694.0" onMouseClicked="#menuLogoutClicked" prefHeight="46.0" prefWidth="220.0">
+                            <children>
+                                <Text fill="WHITE" layoutX="77.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quitter" wrappingWidth="118.876953125">
+                                    <font>
+                                        <Font name="Verdana" size="18.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="27.0" fitWidth="29.0" layoutX="40.0" layoutY="9.0">
+                                    <image>
+                                        <Image url="@../../../assets/icons8_export_32px.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Pane>
+                        <Separator layoutX="10.0" layoutY="693.0" prefWidth="200.0" />
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <AnchorPane fx:id="main_content" prefHeight="692.0" prefWidth="1021.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fx:id="btn_close_main_window" fitHeight="30.0" fitWidth="31.0" layoutX="994.0" layoutY="6.0" onMouseClicked="#closeMainWindowClicked">
+                            <image>
+                                <Image url="@../../../assets/icon_close.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
