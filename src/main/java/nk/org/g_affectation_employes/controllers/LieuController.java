@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import nk.org.g_affectation_employes.models.Lieu;
 import nk.org.g_affectation_employes.services.LieuService;
+import nk.org.g_affectation_employes.utils.Helper;
 import nk.org.g_affectation_employes.utils.Notification;
 
 import java.net.URL;
@@ -190,22 +191,24 @@ public class LieuController implements Initializable {
 
     @FXML
     void exportToExcelClicked(MouseEvent event) {
-
+        Helper.exportToExcel(table_lieu, Helper.getFilePath("EXCEL Files", "*.xlsx"));
     }
 
     @FXML
     void exportToPdfClicked(MouseEvent event) {
-
+        Helper.exportToPDF(table_lieu, Helper.getFilePath("PDF Files", "*.pdf"));
     }
 
     @FXML
     void getSelectedRowFromTable(MouseEvent event) {
-        this.toggleBtnAndText("MODIFICATION", false, true);
         Lieu selectedItem = table_lieu.getSelectionModel().getSelectedItem();
 
-        input_code.setText(selectedItem.getCodelieu());
-        designation.setText(selectedItem.getDesignation());
-        combo_province.setValue(selectedItem.getProvince());
+        if(selectedItem != null){
+            this.toggleBtnAndText("MODIFICATION", false, true);
+            input_code.setText(selectedItem.getCodelieu());
+            designation.setText(selectedItem.getDesignation());
+            combo_province.setValue(selectedItem.getProvince());
+        }
     }
 
     @FXML

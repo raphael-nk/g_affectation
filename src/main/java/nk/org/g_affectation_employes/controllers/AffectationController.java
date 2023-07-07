@@ -19,6 +19,7 @@ import nk.org.g_affectation_employes.models.Lieu;
 import nk.org.g_affectation_employes.services.AffectationService;
 import nk.org.g_affectation_employes.services.EmployeService;
 import nk.org.g_affectation_employes.services.LieuService;
+import nk.org.g_affectation_employes.utils.Helper;
 import nk.org.g_affectation_employes.utils.Notification;
 
 import java.net.URL;
@@ -221,12 +222,12 @@ public class AffectationController implements Initializable {
 
     @FXML
     void exportToExcelClicked(MouseEvent event) {
-
+        Helper.exportToExcel(table_affectation, Helper.getFilePath("EXCEL Files", "*.xlsx"));
     }
 
     @FXML
     void exportToPdfClicked(MouseEvent event) {
-
+        Helper.exportToPDF(table_affectation, Helper.getFilePath("PDF Files", "*.pdf"));
     }
 
     @FXML

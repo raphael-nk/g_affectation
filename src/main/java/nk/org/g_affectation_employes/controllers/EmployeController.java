@@ -177,23 +177,25 @@ public class EmployeController implements Initializable {
 
     @FXML
     void exportToExcelClicked(MouseEvent event) {
-
+        Helper.exportToExcel(table_employe, Helper.getFilePath("EXCEL Files", "*.xlsx"));
     }
 
     @FXML
     void exportToPdfClicked(MouseEvent event) {
-
+        Helper.exportToPDF(table_employe, Helper.getFilePath("PDF Files", "*.pdf"));
     }
 
     @FXML
     void getSelectedRowFromTable(MouseEvent event) {
-        this.toggleBtnAndText("MODIFICATION", false, true);
         Employe selectedItem = table_employe.getSelectionModel().getSelectedItem();
 
-        input_code_employe.setText(selectedItem.getCodeemp());
-        input_nom.setText(selectedItem.getNom());
-        input_prenom.setText(selectedItem.getPrenom());
-        input_poste.setText(selectedItem.getPoste());
+        if(selectedItem != null){
+            this.toggleBtnAndText("MODIFICATION", false, true);
+            input_code_employe.setText(selectedItem.getCodeemp());
+            input_nom.setText(selectedItem.getNom());
+            input_prenom.setText(selectedItem.getPrenom());
+            input_poste.setText(selectedItem.getPoste());
+        }
     }
 
     @FXML

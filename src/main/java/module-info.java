@@ -10,6 +10,10 @@ module nk.org.g_affectation_employes {
     requires org.hibernate.orm.core;
     requires java.naming;
 
+    requires poi;
+    requires poi.ooxml;
+    requires org.apache.pdfbox;
+
     opens nk.org.g_affectation_employes to javafx.fxml, javafx.graphics;
     opens nk.org.g_affectation_employes.models to org.hibernate.orm.core, javafx.base;
     opens nk.org.g_affectation_employes.controllers to javafx.fxml;
